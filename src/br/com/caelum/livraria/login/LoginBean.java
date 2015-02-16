@@ -6,8 +6,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import br.com.caelum.livraria.bean.MenuBean;
-import br.com.caelum.livraria.dao.UsuarioDao;
 import br.com.caelum.livraria.modelo.Usuario;
+import br.com.caelum.livraria.service.UsuarioService;
 
 @Model
 public class LoginBean {
@@ -15,7 +15,7 @@ public class LoginBean {
 	private Usuario usuario = new Usuario();
 	
 	@Inject
-	private UsuarioDao dao;
+	private UsuarioService usuarioService;
 	
 	@Inject
 	UsuarioLogadoBean usuarioLogado;
@@ -29,7 +29,7 @@ public class LoginBean {
 	
 	public String efetuaLogin() {
 		
-		Usuario usuarioEncontrado = this.dao.buscaPeloLogin(usuario.getLogin());
+		Usuario usuarioEncontrado = this.usuarioService.buscaPeloLogin(usuario.getLogin());
 		
 		if(usuarioEncontrado!= null && possuiMesmaSenha(usuarioEncontrado)) {
 			usuarioLogado.logar(usuarioEncontrado);

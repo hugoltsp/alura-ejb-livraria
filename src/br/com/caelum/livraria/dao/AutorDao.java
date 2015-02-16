@@ -25,16 +25,18 @@ public class AutorDao {
 		System.out.println("--AutorDao criado");
 	}
 	
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	@TransactionAttribute(TransactionAttributeType.MANDATORY)
 	public void salva(Autor autor) {
 		this.entityManager.persist(autor);
 
 	}
 	
+	@TransactionAttribute(TransactionAttributeType.NEVER)
 	public List<Autor> todosAutores() {
 		return this.entityManager.createQuery("select a from Autor a", Autor.class).getResultList();
  	}
-
+	
+	@TransactionAttribute(TransactionAttributeType.NEVER)
 	public Autor buscaPelaId(Integer autorId) {
 		Autor autor = this.entityManager.find(Autor.class, autorId);
 		return autor;
