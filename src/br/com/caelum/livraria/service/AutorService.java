@@ -20,11 +20,12 @@ public class AutorService {
 	private AutorDao dao;
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
- 	public void salva(Autor autor) {
+ 	public void salva(Autor autor){
 		this.dao.salva(autor);
+//		throw new LivrariaException();
  	}
  	
-	@TransactionAttribute(TransactionAttributeType.NEVER)
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public List<Autor> todosAutores() {
 		return this.dao.todosAutores();
 	}

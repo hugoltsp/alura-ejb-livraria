@@ -15,6 +15,7 @@ import br.com.caelum.livraria.modelo.Autor;
 
 @Stateless
 @TransactionManagement(TransactionManagementType.CONTAINER)
+//@Interceptors({ LogInterceptador.class }) a configuração do interceptador foi substituida de anotação para xml
 public class AutorDao {
  	
 	@PersistenceContext
@@ -28,7 +29,6 @@ public class AutorDao {
 	@TransactionAttribute(TransactionAttributeType.MANDATORY)
 	public void salva(Autor autor) {
 		this.entityManager.persist(autor);
-
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.NEVER)
