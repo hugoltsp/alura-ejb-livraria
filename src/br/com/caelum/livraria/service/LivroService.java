@@ -21,4 +21,8 @@ public class LivroService {
 	public List<Livro> todosLivros() {
 		return this.livroDao.todosLivros();
 	}
+
+	public List<Livro> livrosPeloTitulo(String titulo) {
+		return this.livroDao.livrosPeloTitulo(titulo);
+	}
 }
